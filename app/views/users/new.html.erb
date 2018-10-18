@@ -1,5 +1,5 @@
 <h1>User Signup</h1>
-
+<h2>HTMl Form</h2>
 <form class="form-horizontal" action="/users/" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <div class="form-group row">
@@ -17,5 +17,38 @@
     <input class="form-control col-sm-6" type="password" name="user[password]" id="password" placeholder="Password"/>
   </div>
 
-  <input class="btn btn-primary" type="submit" value="signup"/>
+  <input class="btn btn-primary" type="submit" value="Sign Up"/>
 </form>
+<hr>
+<hr>
+<h2>Form Tag</h2>
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag("user[username]", "Username:") %>
+  <%= text_field_tag("user[username]") %>
+
+  <%= label_tag("user[email]", "Email:") %>
+  <%= email_field_tag("user[email]") %>
+
+  <%= label_tag("user[password]", "Password:") %>
+  <%= password_field_tag("user[password]") %>
+
+  <%= submit_tag("Sign Up") %>
+<% end %>
+<hr>
+<hr>
+<h2>Form For</h2>
+<%= form_for @user, html: { class: "form-horizontal" } do |f| %>
+  <div class="form-group row">
+    <%= f.label :username, class: "control-label col-sm-2" %>
+    <%= f.text_field :username, class: "form-control col-sm-6", placeholder: "username" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :email, class: "control-label col-sm-2" %>
+    <%= f.email_field :email, class: "form-control col-sm-6", placeholder: "email@example.com" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :password , class: "control-label col-sm-2" %>
+    <%= f.password_field :password, class: "form-control col-sm-6" %>
+  </div>
+  <%= f.submit "Sign Up" %>
+<% end %>
