@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       # binding.pry
       flash['notice'] = 'User updated successfully'
-      render 'new'
+      render 'new', notice: 'User updated successfully' #Try and read on using the locale file for system messages t(users.signup.success)
     else
       # binding.pry
       flash['notice'] = 'User update failed'
