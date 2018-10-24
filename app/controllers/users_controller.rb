@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     else
       # binding.pry
       flash['notice'] = 'User update failed'
-      render :edit
+       render :edit, notice: 'User update failed' # Please output the errors that were raised(This should accomplished at the View level)
     end
   end
 
